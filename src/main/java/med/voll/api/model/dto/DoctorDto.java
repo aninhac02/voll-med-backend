@@ -20,6 +20,8 @@ public class DoctorDto {
     @Email
     public String email;
     @NotBlank
+    public String telephone;
+    @NotBlank
     @Pattern(regexp = "\\d{4,6}")
     public String crm;
     @NotNull

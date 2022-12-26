@@ -33,6 +33,7 @@ public class Doctor {
 
     public String name;
     public String email;
+    private String telephone;
     public String crm;
     @Enumerated(EnumType.STRING)
     public Speciality speciality;
