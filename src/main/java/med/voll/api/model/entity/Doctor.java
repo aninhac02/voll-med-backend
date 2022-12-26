@@ -31,13 +31,13 @@ public class Doctor {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    public String name;
-    public String email;
+    private String name;
+    private String email;
     private String telephone;
-    public String crm;
+    private String crm;
     @Enumerated(EnumType.STRING)
-    public Speciality speciality;
+    private Speciality speciality;
     @Embedded
-    public Address address;
+    private Address address;
 
 }

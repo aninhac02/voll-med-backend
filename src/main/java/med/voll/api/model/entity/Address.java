@@ -16,16 +16,16 @@ import lombok.Setter;
 public class Address {
 
     @NotBlank
-    public String street;
+    private String street;
     @NotBlank
-    public String district;
+    private String district;
     @NotBlank
     @Pattern(regexp = "\\d{8}")
-    public String cep;
+    private String cep;
     @NotBlank
-    public String city;
+    private String city;
     @NotBlank
-    public String uf;
-    public String number;
-    public String complement;
+    private String uf;
+    private String number;
+    private String complement;
 }
