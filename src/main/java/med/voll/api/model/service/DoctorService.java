@@ -7,6 +7,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.print.Pageable;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class DoctorService {
 
@@ -23,6 +27,10 @@ public class DoctorService {
     public DoctorDto findById(Long id) {
         return modelMapper.map(doctorRepository.findById(id), DoctorDto.class);
 
+    }
+
+    public List<DoctorDto> findAll() {
+        return doctorRepository.findAll().stream().map(d -> modelMapper.map(d, DoctorDto.class)).toList();
     }
 
     public void update(){

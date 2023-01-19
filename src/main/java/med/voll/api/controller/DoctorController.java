@@ -2,15 +2,15 @@ package med.voll.api.controller;
 
 import jakarta.validation.Valid;
 import med.voll.api.model.dto.DoctorDto;
+import med.voll.api.model.entity.Doctor;
 import med.voll.api.model.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.awt.print.Pageable;
+import java.util.List;
 
 @RestController
 @RequestMapping("/doctors")
@@ -26,8 +26,16 @@ public class DoctorController {
 
     }
 
-    @GetMapping
-    public void findById(@RequestParam Long id){
-        doctorService.findById(id);
+    @GetMapping("/{id}")
+    public DoctorDto findById(@PathVariable Long id){
+        return doctorService.findById(id);
     }
+
+    @GetMapping
+    public List<DoctorDto> findAll() {
+        return doctorService.findAll();
+
+    }
+
+
 }
