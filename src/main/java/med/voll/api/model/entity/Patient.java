@@ -27,10 +27,10 @@ public class Patient {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private String nome;
+    private String name;
     private String email;
     private String cpf;
-    private String telefone;
+    private String telephone;
     @Embedded
     private Address address;
 }

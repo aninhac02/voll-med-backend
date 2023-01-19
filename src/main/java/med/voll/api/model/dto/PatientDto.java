@@ -13,7 +13,7 @@ public class PatientDto {
 
 
     @NotBlank
-    private String nome;
+    private String name;
 
     @NotBlank
     @Email
@@ -21,7 +21,7 @@ public class PatientDto {
     @NotBlank
     private String cpf;
     @NotBlank
-    private String telefone;
+    private String telephone;
     @Embedded
     private Address address;
 }

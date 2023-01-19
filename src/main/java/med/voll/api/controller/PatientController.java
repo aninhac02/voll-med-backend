@@ -5,12 +5,9 @@ import med.voll.api.model.dto.PatientDto;
 import med.voll.api.model.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/patients")
@@ -26,8 +23,15 @@ public class PatientController {
 
     }
 
-    @GetMapping
-    public void findById(@RequestParam Long id){
-        patientService.findById(id);
+    @GetMapping("/{id}")
+    public PatientDto findById(@PathVariable Long id){
+
+        return patientService.findById(id);
     }
+
+    @GetMapping
+    public List<PatientDto> findAll() {
+        return patientService.findAll();
+    }
+
 }
