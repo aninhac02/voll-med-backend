@@ -52,4 +52,10 @@ public class DoctorService {
         }).orElse(ResponseEntity.notFound().build());
     }
 
+    public void inactivate(Long id) {
+        doctorRepository.findById(id).map(doctor -> {
+            doctor.setActive(false);
+            return null;
+        });
+    }
 }

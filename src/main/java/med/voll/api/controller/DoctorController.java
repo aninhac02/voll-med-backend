@@ -45,5 +45,11 @@ public class DoctorController {
         return doctorService.update(id, updateDoctorDto);
     }
 
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void inactivate(@PathVariable Long id) {
+        doctorService.inactivate(id);
+    }
+
 
 }

@@ -48,4 +48,11 @@ public class PatientService {
         }).orElse(ResponseEntity.notFound().build());
 
     }
+
+    public void inactivate(Long id){
+        patientRepository.findById(id).map(patient -> {
+            patient.setActive(false);
+            return null;
+        });
+    }
 }
