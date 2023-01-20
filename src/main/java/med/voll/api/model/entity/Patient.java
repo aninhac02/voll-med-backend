@@ -33,4 +33,6 @@ public class Patient {
     private String telephone;
     @Embedded
     private Address address;
+
+    private boolean active;
 }

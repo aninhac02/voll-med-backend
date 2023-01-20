@@ -24,4 +24,6 @@ public class PatientDto {
     private String telephone;
     @Embedded
     private Address address;
+
+    private boolean active;
 }
