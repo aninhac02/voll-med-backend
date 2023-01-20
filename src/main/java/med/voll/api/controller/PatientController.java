@@ -2,8 +2,10 @@ package med.voll.api.controller;
 
 import jakarta.validation.Valid;
 import med.voll.api.model.dto.PatientDto;
+import med.voll.api.model.dto.UpdatePatientDto;
 import med.voll.api.model.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +34,12 @@ public class PatientController {
     @GetMapping
     public List<PatientDto> findAll() {
         return patientService.findAll();
+    }
+
+    @PutMapping("/{id}")
+    @Transactional
+    public ResponseEntity update(@PathVariable Long id, @RequestBody UpdatePatientDto updatePatientDto) {
+        return patientService.update(id, updatePatientDto);
     }
 
 }

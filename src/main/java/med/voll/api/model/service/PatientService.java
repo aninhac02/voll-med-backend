@@ -2,10 +2,12 @@ package med.voll.api.model.service;
 
 
 import med.voll.api.model.dto.PatientDto;
+import med.voll.api.model.dto.UpdatePatientDto;
 import med.voll.api.model.entity.Patient;
 import med.voll.api.model.repository.PatientRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,5 +33,19 @@ public class PatientService {
 
     public List<PatientDto> findAll() {
         return patientRepository.findAll().stream().map(p -> modelMapper.map(p, PatientDto.class)).toList();
+    }
+
+    public ResponseEntity update(Long id, UpdatePatientDto updatePatientDto) {
+        return patientRepository.findById(id).map(patient -> {
+            patient.setName(updatePatientDto.getName() != null ? updatePatientDto.getName() : patient.getName());
+            patient.setEmail(updatePatientDto.getEmail() != null ? updatePatientDto.getEmail() : patient.getEmail());
+            patient.setCpf(updatePatientDto.getCpf() != null ? updatePatientDto.getCpf() : patient.getCpf());
+            patient.setTelephone(updatePatientDto.getTelephone() != null ? updatePatientDto.getTelephone() : patient.getTelephone());
+            patient.setAddress(updatePatientDto.getAddress() != null ? updatePatientDto.getAddress() : patient.getAddress());
+
+            Patient patientUpdated = patientRepository.save(patient);
+            return ResponseEntity.ok().body(patientUpdated);
+        }).orElse(ResponseEntity.notFound().build());
+
     }
 }
