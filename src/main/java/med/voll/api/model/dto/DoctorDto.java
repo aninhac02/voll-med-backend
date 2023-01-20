@@ -29,4 +29,7 @@ public class DoctorDto {
     @NotNull
     @Valid
     public Address address;
+
+    private boolean active;
+
 }

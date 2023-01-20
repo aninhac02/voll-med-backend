@@ -22,4 +22,7 @@ public class UpdateDoctorDto {
     public String speciality;
 
     public Address address;
+
+    private boolean active;
+
 }

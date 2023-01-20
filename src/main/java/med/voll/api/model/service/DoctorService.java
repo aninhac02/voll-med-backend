@@ -45,6 +45,7 @@ public class DoctorService {
             doctor.setCrm(updateDoctorDto.getCrm() != null ? updateDoctorDto.getCrm() : doctor.getCrm());
             doctor.setSpeciality(updateDoctorDto.getSpeciality() != null ? Speciality.valueOf(updateDoctorDto.getSpeciality()) : doctor.getSpeciality());
             doctor.setAddress(updateDoctorDto.getAddress() != null ? updateDoctorDto.getAddress() : doctor.getAddress());
+            doctor.setActive(updateDoctorDto.isActive());
 
           Doctor doctorUpdated = doctorRepository.save(doctor);
           return ResponseEntity.ok().body(doctorUpdated);

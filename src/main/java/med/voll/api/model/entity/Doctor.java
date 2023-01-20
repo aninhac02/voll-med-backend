@@ -40,4 +40,6 @@ public class Doctor {
     @Embedded
     private Address address;
 
+    private boolean active;
+
 }
