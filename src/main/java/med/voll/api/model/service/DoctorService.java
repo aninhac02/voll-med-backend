@@ -39,21 +39,12 @@ public class DoctorService {
 
     public ResponseEntity update(Long id, UpdateDoctorDto updateDoctorDto){
         return doctorRepository.findById(id).map(doctor -> {
-          if (updateDoctorDto.getName() != null) {
-              doctor.setName(updateDoctorDto.getName());
-          }
-          if (updateDoctorDto.getEmail() != null) {
-              doctor.setEmail(updateDoctorDto.getEmail());
-          }
-          if (updateDoctorDto.getTelephone() != null) {
-              doctor.setTelephone(updateDoctorDto.getTelephone());
-          }
-          if (updateDoctorDto.getCrm() != null) {
-              doctor.setSpeciality(Speciality.valueOf(updateDoctorDto.getSpeciality()));
-          }
-          if (updateDoctorDto.getAddress() != null) {
-              doctor.setAddress(updateDoctorDto.getAddress());
-          }
+            doctor.setName(updateDoctorDto.getName() != null ? updateDoctorDto.getName() : doctor.getName());
+            doctor.setEmail(updateDoctorDto.getEmail() != null ? updateDoctorDto.getEmail() : doctor.getEmail());
+            doctor.setTelephone(updateDoctorDto.getTelephone() != null ? updateDoctorDto.getTelephone() : doctor.getTelephone());
+            doctor.setCrm(updateDoctorDto.getCrm() != null ? updateDoctorDto.getCrm() : doctor.getCrm());
+            doctor.setSpeciality(updateDoctorDto.getSpeciality() != null ? Speciality.valueOf(updateDoctorDto.getSpeciality()) : doctor.getSpeciality());
+            doctor.setAddress(updateDoctorDto.getAddress() != null ? updateDoctorDto.getAddress() : doctor.getAddress());
 
           Doctor doctorUpdated = doctorRepository.save(doctor);
           return ResponseEntity.ok().body(doctorUpdated);
