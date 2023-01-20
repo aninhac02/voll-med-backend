@@ -40,6 +40,7 @@ public class DoctorController {
     }
 
     @PutMapping("/{id}")
+    @Transactional
     public ResponseEntity update(@PathVariable Long id, @RequestBody UpdateDoctorDto updateDoctorDto) {
         return doctorService.update(id, updateDoctorDto);
     }
